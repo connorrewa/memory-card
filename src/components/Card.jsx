@@ -1,8 +1,8 @@
-export default function Card({ url, key, name }) {
+export default function Card({ url, name, onClick }) {
     return (
-        <div className='card'>
+        <div className='card' onClick={(e) => onClick(e.target.name)}>
             <h2>{name}</h2>
-            <img src={url} alt='pokemon' />
+            <img src={url} name={name} alt='pokemon' />
         </div>
     );
 }

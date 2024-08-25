@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import pokemonList from "../assets/pokemonList";
 const dataUrl = "https://pokeapi.co/api/v2/pokemon/";
 
-export default function Cards() {
+export default function Cards({ handleCardClick, addSelectedPokemon }) {
     const [pokemon, setPokemon] = useState([]);
 
     function fetchImages() {
@@ -29,7 +29,7 @@ export default function Cards() {
     }, []);
 
     function randomizePokemonOrder() {
-        let newPokemon = new Array(pokemon);
+        let newPokemon = [...pokemon];
         let curr = pokemon.length;
         while (curr != 0) {
             let rand = Math.floor(Math.random() * curr);
@@ -39,8 +39,13 @@ export default function Cards() {
                 newPokemon[curr],
             ];
         }
-
         setPokemon(newPokemon);
+    }
+
+    function handleCardClick(name) {
+        console.log(name);
+        addSelectedPokemon(name);
+        randomizePokemonOrder();
     }
 
     return (
