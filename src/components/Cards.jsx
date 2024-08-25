@@ -49,7 +49,7 @@ export default function Cards({ handleCardClick, addSelectedPokemon }) {
     }
 
     return (
-        <div>
+        <div id='cards'>
             {pokemon.length === 0 ? (
                 <p>Loading...</p>
             ) : (
